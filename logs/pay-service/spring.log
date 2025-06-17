@@ -117,3 +117,13 @@ Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.IllegalSta
 17:42:10:215  INFO 142281 --- [http-nio-0.0.0.0-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 17:42:10:215  INFO 142281 --- [http-nio-0.0.0.0-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 17:42:10:216  INFO 142281 --- [http-nio-0.0.0.0-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+17:45:15:526  WARN 142281 --- [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+17:45:15:526  WARN 142281 --- [Thread-4] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+17:45:15:529  WARN 142281 --- [Thread-4] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+17:45:15:530  WARN 142281 --- [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+17:45:15:561  INFO 142281 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+17:45:15:565  INFO 142281 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+17:45:15:868  INFO 142281 --- [SpringApplicationShutdownHook] com.alibaba.nacos.common.remote.client   : Shutdown rpc client, set status to shutdown
+17:45:15:869  INFO 142281 --- [SpringApplicationShutdownHook] com.alibaba.nacos.common.remote.client   : Shutdown client event executor java.util.concurrent.ScheduledThreadPoolExecutor@9a3c81c[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
+17:45:15:869  INFO 142281 --- [SpringApplicationShutdownHook] com.alibaba.nacos.common.remote.client   : Close current connection 1750153205516_172.24.0.1_54450
+17:45:15:874  INFO 142281 --- [SpringApplicationShutdownHook] c.a.n.c.remote.client.grpc.GrpcClient    : Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@26f078d6[Running, pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 149]
