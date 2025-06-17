@@ -14,6 +14,9 @@
         <module>item-service</module>
         <module>cart-service</module>
         <module>hm-api</module>
+        <module>user-service</module>
+        <module>trade-service</module>
+        <module>pay-service</module>
     </modules>
 
     <parent>
@@ -87,6 +90,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <!--nacos 服务注册发现-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
     </dependencies>
 

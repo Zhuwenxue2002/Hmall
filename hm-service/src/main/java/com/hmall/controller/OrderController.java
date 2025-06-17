@@ -2,6 +2,7 @@ package com.hmall.controller;
 
 import com.hmall.common.utils.BeanUtils;
 import com.hmall.domain.dto.OrderFormDTO;
+import com.hmall.domain.po.Order;
 import com.hmall.domain.vo.OrderVO;
 import com.hmall.service.IOrderService;
 import io.swagger.annotations.Api;
@@ -35,5 +36,11 @@ public class OrderController {
     @PutMapping("/{orderId}")
     public void markOrderPaySuccess(@PathVariable("orderId") Long orderId) {
         orderService.markOrderPaySuccess(orderId);
+    }
+
+    @ApiOperation("修改订单状态")
+    @PutMapping
+    public void updateOrder(@RequestBody Order order) {
+        orderService.updateById(order);
     }
 }

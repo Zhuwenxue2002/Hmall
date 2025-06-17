@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @MapperScan("com.hmall.cart.mapper")
 @SpringBootApplication
-@EnableFeignClients(basePackages = "com.hmall.api.client", defaultConfiguration = DefaultFeignConfig.class)
+@EnableFeignClients(basePackages = "com.hmall.api.client")
 public class CartApplication {
     public static void main(String[] args) {
         SpringApplication.run(CartApplication.class, args);

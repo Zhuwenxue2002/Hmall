@@ -4,7 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hmall.api.client.ItemClient;
-import com.hmall.api.dto.ItemDTO;
+import com.hmall.api.dto.ItemApiDTO;
 import com.hmall.cart.domin.dto.CartFormDTO;
 import com.hmall.cart.domin.po.Cart;
 import com.hmall.cart.domin.vo.CartVO;
@@ -110,16 +110,16 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
 //        }
 //        List<ItemDTO> items = re.getBody();
 
-        List<ItemDTO> items = itemClient.queryItemByIds(itemIds);
+        List<ItemApiDTO> items = itemClient.queryItemByIds(itemIds);
         if (CollUtils.isEmpty(items)) {
             return;
         }
 
         // 3.转为 id 到 item的map
-        Map<Long, ItemDTO> itemMap = items.stream().collect(Collectors.toMap(ItemDTO::getId, Function.identity()));
+        Map<Long, ItemApiDTO> itemMap = items.stream().collect(Collectors.toMap(ItemApiDTO::getId, Function.identity()));
         // 4.写入vo
         for (CartVO v : vos) {
-            ItemDTO item = itemMap.get(v.getItemId());
+            ItemApiDTO item = itemMap.get(v.getItemId());
             if (item == null) {
                 continue;
             }

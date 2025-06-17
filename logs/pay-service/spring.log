@@ -1,0 +1,119 @@
+17:39:31:087  INFO 142130 --- [main] com.hmall.pay.PayApplication             : Starting PayApplication using Java 17.0.15 on zoey-OMEN-Laptop-15-ek0xxx with PID 142130 (/mnt/nvme1n1p1/idea/IdeaProjects/hmall/pay-service/target/classes started by zoey in /mnt/nvme1n1p1/idea/IdeaProjects/hmall)
+17:39:31:089 DEBUG 142130 --- [main] com.hmall.pay.PayApplication             : Running with Spring Boot v2.7.12, Spring v5.3.27
+17:39:31:090  INFO 142130 --- [main] com.hmall.pay.PayApplication             : The following 1 profile is active: "dev"
+17:39:31:927  INFO 142130 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=7d461361-a1cb-3daa-9d79-e82a52c95ffe
+17:39:32:302  INFO 142130 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8085 (http)
+17:39:32:391  INFO 142130 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1256 ms
+17:39:32:536  INFO 142130 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'user-service' URL not provided. Will try picking an instance via load-balancing.
+17:39:32:723  INFO 142130 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'order-service' URL not provided. Will try picking an instance via load-balancing.
+17:39:33:362  INFO 142130 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+17:39:33:521  WARN 142130 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'nacosWatch'; nested exception is java.lang.RuntimeException: ErrCode:-400, ErrMsg:Shutdown in progress
+17:39:33:525 ERROR 142130 --- [main] c.a.cloud.nacos.discovery.NacosWatch     : namingService unsubscribe failed, properties:NacosDiscoveryProperties{serverAddr='localhost:8848', username='', password='', endpoint='', namespace='', watchDelay=30000, logName='', service='pay-service', weight=1.0, clusterName='DEFAULT', group='DEFAULT_GROUP', namingLoadCacheAtStart='false', metadata={preserved.register.source=SPRING_CLOUD}, registerEnabled=true, ip='192.168.172.212', networkInterface='', port=-1, secure=false, accessKey='', secretKey='', heartBeatInterval=null, heartBeatTimeout=null, ipDeleteTimeout=null, instanceEnabled=true, ephemeral=true, failureToleranceEnabled=false}, ipDeleteTimeout=null, failFast=true}
+
+java.lang.RuntimeException: ErrCode:-400, ErrMsg:Exception java.lang.IllegalStateException: Shutdown in progress [in thread "main"]
+	at com.alibaba.cloud.nacos.NacosServiceManager.createNewNamingService(NacosServiceManager.java:102) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.4.0.jar:2021.0.4.0]
+	at com.alibaba.cloud.nacos.NacosServiceManager.buildNamingService(NacosServiceManager.java:90) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.4.0.jar:2021.0.4.0]
+	at com.alibaba.cloud.nacos.NacosServiceManager.getNamingService(NacosServiceManager.java:46) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.4.0.jar:2021.0.4.0]
+	at com.alibaba.cloud.nacos.discovery.NacosWatch.stop(NacosWatch.java:173) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.4.0.jar:2021.0.4.0]
+	at com.alibaba.cloud.nacos.discovery.NacosWatch.destroy(NacosWatch.java:204) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.4.0.jar:2021.0.4.0]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:213) ~[spring-beans-5.3.27.jar:5.3.27]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587) ~[spring-beans-5.3.27.jar:5.3.27]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559) ~[spring-beans-5.3.27.jar:5.3.27]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1163) ~[spring-beans-5.3.27.jar:5.3.27]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520) ~[spring-beans-5.3.27.jar:5.3.27]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1156) ~[spring-beans-5.3.27.jar:5.3.27]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1108) ~[spring-context-5.3.27.jar:5.3.27]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:596) ~[spring-context-5.3.27.jar:5.3.27]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.12.jar:2.7.12]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.12.jar:2.7.12]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.12.jar:2.7.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.12.jar:2.7.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.12.jar:2.7.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.12.jar:2.7.12]
+	at com.hmall.pay.PayApplication.main(PayApplication.java:11) ~[classes/:na]
+Caused by: com.alibaba.nacos.api.exception.NacosException: java.lang.reflect.InvocationTargetException
+	at com.alibaba.nacos.api.naming.NamingFactory.createNamingService(NamingFactory.java:61) ~[nacos-client-2.0.4.jar:na]
+	at com.alibaba.nacos.api.NacosFactory.createNamingService(NacosFactory.java:77) ~[nacos-client-2.0.4.jar:na]
+	at com.alibaba.cloud.nacos.NacosServiceManager.createNewNamingService(NacosServiceManager.java:99) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.4.0.jar:2021.0.4.0]
+	... 19 common frames omitted
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481) ~[na:na]
+	at com.alibaba.nacos.api.naming.NamingFactory.createNamingService(NamingFactory.java:59) ~[nacos-client-2.0.4.jar:na]
+	... 21 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: Could not initialize class com.alibaba.nacos.common.notify.NotifyCenter
+	at com.alibaba.nacos.client.naming.NacosNamingService.init(NacosNamingService.java:92) ~[nacos-client-2.0.4.jar:na]
+	at com.alibaba.nacos.client.naming.NacosNamingService.<init>(NacosNamingService.java:81) ~[nacos-client-2.0.4.jar:na]
+	... 27 common frames omitted
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.IllegalStateException: Shutdown in progress [in thread "main"]
+	at java.base/java.lang.ApplicationShutdownHooks.add(ApplicationShutdownHooks.java:66) ~[na:na]
+	at java.base/java.lang.Runtime.addShutdownHook(Runtime.java:216) ~[na:na]
+	at com.alibaba.nacos.common.utils.ThreadUtils.addShutdownHook(ThreadUtils.java:150) ~[nacos-client-2.0.4.jar:na]
+	at com.alibaba.nacos.common.notify.NotifyCenter.<clinit>(NotifyCenter.java:108) ~[nacos-client-2.0.4.jar:na]
+	at com.alibaba.nacos.client.naming.NacosNamingService.init(NacosNamingService.java:92) ~[nacos-client-2.0.4.jar:na]
+	at com.alibaba.nacos.client.naming.NacosNamingService.<init>(NacosNamingService.java:81) ~[nacos-client-2.0.4.jar:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481) ~[na:na]
+	at com.alibaba.nacos.api.naming.NamingFactory.createNamingService(NamingFactory.java:59) ~[nacos-client-2.0.4.jar:na]
+	at com.alibaba.nacos.api.NacosFactory.createNamingService(NacosFactory.java:77) ~[nacos-client-2.0.4.jar:na]
+	at com.alibaba.cloud.nacos.NacosServiceManager.createNewNamingService(NacosServiceManager.java:99) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.4.0.jar:2021.0.4.0]
+	at com.alibaba.cloud.nacos.NacosServiceManager.buildNamingService(NacosServiceManager.java:90) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.4.0.jar:2021.0.4.0]
+	at com.alibaba.cloud.nacos.NacosServiceManager.getNamingService(NacosServiceManager.java:46) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.4.0.jar:2021.0.4.0]
+	at com.alibaba.cloud.nacos.discovery.NacosWatch.start(NacosWatch.java:130) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.4.0.jar:2021.0.4.0]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:178) ~[spring-context-5.3.27.jar:5.3.27]
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54) ~[spring-context-5.3.27.jar:5.3.27]
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356) ~[spring-context-5.3.27.jar:5.3.27]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155) ~[spring-context-5.3.27.jar:5.3.27]
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123) ~[spring-context-5.3.27.jar:5.3.27]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:937) ~[spring-context-5.3.27.jar:5.3.27]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.27.jar:5.3.27]
+	... 7 common frames omitted
+
+17:40:02:712  INFO 142281 --- [main] com.hmall.pay.PayApplication             : Starting PayApplication using Java 17.0.15 on zoey-OMEN-Laptop-15-ek0xxx with PID 142281 (/mnt/nvme1n1p1/idea/IdeaProjects/hmall/pay-service/target/classes started by zoey in /mnt/nvme1n1p1/idea/IdeaProjects/hmall)
+17:40:02:714 DEBUG 142281 --- [main] com.hmall.pay.PayApplication             : Running with Spring Boot v2.7.12, Spring v5.3.27
+17:40:02:714  INFO 142281 --- [main] com.hmall.pay.PayApplication             : The following 1 profile is active: "local"
+17:40:03:560  INFO 142281 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=7d461361-a1cb-3daa-9d79-e82a52c95ffe
+17:40:03:877  INFO 142281 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8085 (http)
+17:40:03:884  INFO 142281 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+17:40:03:885  INFO 142281 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+17:40:03:972  INFO 142281 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+17:40:03:972  INFO 142281 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1218 ms
+17:40:04:112  INFO 142281 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'user-service' URL not provided. Will try picking an instance via load-balancing.
+17:40:04:283  INFO 142281 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'order-service' URL not provided. Will try picking an instance via load-balancing.
+17:40:04:806  INFO 142281 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+17:40:04:986  INFO 142281 --- [main] com.alibaba.nacos.common.remote.client   : [RpcClientFactory] create a new rpc client of 440c38d5-56c8-48c4-bb43-5726449694c7
+17:40:05:042  INFO 142281 --- [main] org.reflections.Reflections              : Reflections took 25 ms to scan 1 urls, producing 3 keys and 6 values 
+17:40:05:066  INFO 142281 --- [main] org.reflections.Reflections              : Reflections took 12 ms to scan 1 urls, producing 4 keys and 9 values 
+17:40:05:075  INFO 142281 --- [main] org.reflections.Reflections              : Reflections took 7 ms to scan 1 urls, producing 3 keys and 10 values 
+17:40:05:076  WARN 142281 --- [main] org.reflections.Reflections              : given scan urls are empty. set urls in the configuration
+17:40:05:084  INFO 142281 --- [main] org.reflections.Reflections              : Reflections took 7 ms to scan 1 urls, producing 1 keys and 5 values 
+17:40:05:092  INFO 142281 --- [main] org.reflections.Reflections              : Reflections took 7 ms to scan 1 urls, producing 1 keys and 7 values 
+17:40:05:101  INFO 142281 --- [main] org.reflections.Reflections              : Reflections took 7 ms to scan 1 urls, producing 2 keys and 8 values 
+17:40:05:103  WARN 142281 --- [main] org.reflections.Reflections              : given scan urls are empty. set urls in the configuration
+17:40:05:103  INFO 142281 --- [main] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] RpcClient init label, labels = {module=naming, source=sdk}
+17:40:05:105  INFO 142281 --- [main] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] RpcClient init, ServerListFactory = com.alibaba.nacos.client.naming.core.ServerListManager
+17:40:05:105  INFO 142281 --- [main] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
+17:40:05:105  INFO 142281 --- [main] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
+17:40:05:106  INFO 142281 --- [main] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] Try to connect to server on start up, server: {serverIp = 'localhost', server main port = 8848}
+17:40:05:691  INFO 142281 --- [main] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] Success to connect to server [localhost:8848] on start up, connectionId = 1750153205516_172.24.0.1_54450
+17:40:05:691  INFO 142281 --- [com.alibaba.nacos.client.remote.worker] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] Notify connected event to listeners.
+17:40:05:692  INFO 142281 --- [main] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+17:40:05:692  INFO 142281 --- [main] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$$Lambda$1012/0x00007213e0804a60
+17:40:05:737  INFO 142281 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8085 (http) with context path ''
+17:40:05:750  INFO 142281 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP pay-service 192.168.172.212:8085 register finished
+17:40:05:755  INFO 142281 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+17:40:05:758  INFO 142281 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+17:40:05:772  INFO 142281 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+17:40:05:786  INFO 142281 --- [main] com.hmall.pay.PayApplication             : Started PayApplication in 3.556 seconds (JVM running for 3.993)
+17:40:06:239  INFO 142281 --- [nacos-grpc-client-executor-12] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] Receive server push request, request = NotifySubscriberRequest, requestId = 4
+17:40:06:241  INFO 142281 --- [nacos-grpc-client-executor-12] com.alibaba.nacos.common.remote.client   : [440c38d5-56c8-48c4-bb43-5726449694c7] Ack server push request, request = NotifySubscriberRequest, requestId = 4
+17:42:10:215  INFO 142281 --- [http-nio-0.0.0.0-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:42:10:215  INFO 142281 --- [http-nio-0.0.0.0-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+17:42:10:216  INFO 142281 --- [http-nio-0.0.0.0-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
