@@ -3,7 +3,7 @@ package com.hmall.pay.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hmall.api.client.OrderClient;
+import com.hmall.api.client.TradeClient;
 import com.hmall.api.client.UserClient;
 import com.hmall.api.dto.OrderApi;
 import com.hmall.common.exception.BizIllegalException;
@@ -16,7 +16,6 @@ import com.hmall.pay.enums.PayStatus;
 import com.hmall.pay.mapper.PayOrderMapper;
 import com.hmall.pay.service.IPayOrderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,13 +31,13 @@ import java.time.LocalDateTime;
  */
 @Service
 @RequiredArgsConstructor
-@EnableFeignClients(basePackages = "com.hmall.api.client")
+
 public class PayOrderServiceImpl extends ServiceImpl<PayOrderMapper, PayOrder> implements IPayOrderService {
 
     private final UserClient userClient;
 //    private final IUserService userService;
 
-    private final OrderClient orderClient;
+    private final TradeClient tradeClient;
 //    private final IOrderService orderService;
 
     @Override
@@ -73,7 +72,7 @@ public class PayOrderServiceImpl extends ServiceImpl<PayOrderMapper, PayOrder> i
         order.setStatus(2);
         order.setPayTime(LocalDateTime.now());
 //        orderService.updateById(order);
-        orderClient.updateOrder(order);
+        tradeClient.updateOrder(order);
     }
 
     public boolean markPayOrderSuccess(Long id, LocalDateTime successTime) {

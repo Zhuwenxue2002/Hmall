@@ -5,8 +5,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(value = "order-service")
-public interface OrderClient {
+@FeignClient(value = "trade-service")
+public interface TradeClient {
     @PutMapping("/orders")
     public void updateOrder(@RequestBody OrderApi order);
 }

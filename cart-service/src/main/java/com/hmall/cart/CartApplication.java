@@ -1,6 +1,6 @@
 package com.hmall.cart;
 
-import com.hmall.api.config.DefaultFeignConfig;
+import com.hmall.api.config.FeignInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @MapperScan("com.hmall.cart.mapper")
 @SpringBootApplication
-@EnableFeignClients(basePackages = "com.hmall.api.client")
+@EnableFeignClients(basePackages = "com.hmall.api.client",defaultConfiguration = FeignInterceptor.class)
 public class CartApplication {
     public static void main(String[] args) {
         SpringApplication.run(CartApplication.class, args);
