@@ -9,7 +9,7 @@ import com.hmall.user.domin.po.Address;
  *  Mapper 接口
  * </p>
  *
- * @author 虎哥
+ * @author 小白
  * @since 2023-05-05
  */
 public interface AddressMapper extends BaseMapper<Address> {
